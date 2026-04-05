@@ -12307,6 +12307,12 @@ class NostalgiaForInfinityX7(IStrategy):
             & ((df["close"] > (df["high_max_24_1h"] * 0.40)) | (df["STOCHRSIk_14_14_3_3_1h"] < 45.0))
             # big drop in the last 4 days, 1h high
             & ((df["close"] > (df["high_max_24_4h"] * 0.20)) | (df["AROONU_14_1h"] < 70.0))
+            # big drop in the last 20 days, 1d high, 1d downtrend
+            & (
+              (df["close"] > (df["high_max_20_1d"] * 0.20))
+              | (df["STOCHRSIk_14_14_3_3_1d"] < 70.0)
+              | (df["ROC_9_1d"] > -15.0)
+            )
           )
 
           # Logic
