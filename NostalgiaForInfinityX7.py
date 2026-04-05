@@ -13611,6 +13611,12 @@ class NostalgiaForInfinityX7(IStrategy):
             & ((df["change_pct_1d"] < 40.0) | (df["RSI_3_4h"] > 35.0) | (df["AROONU_14_4h"] < 40.0))
             # 1d top wick, 4h down move, 1d overbought
             & ((df["top_wick_pct_1d"] < 50.0) | (df["RSI_3_4h"] > 35.0) | (df["ROC_9_1d"] < 60.0))
+            # big drop in the last 20 days, 1d high, 1d downtrend
+            & (
+              (df["close"] > (df["high_max_20_1d"] * 0.20))
+              | (df["STOCHRSIk_14_14_3_3_1d"] < 70.0)
+              | (df["ROC_9_1d"] > -15.0)
+            )
           )
 
           # Logic
