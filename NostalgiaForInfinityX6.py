@@ -20201,6 +20201,8 @@ class NostalgiaForInfinityX6(IStrategy):
           short_entry_logic.append((df["RSI_3_4h"] < 85.0) | (df["AROONU_14_15m"] > 60.0))
           # 4h up move, 15m low
           short_entry_logic.append((df["RSI_3_4h"] < 85.0) | (df["STOCHRSIk_14_14_3_3_15m"] > 30.0))
+          # 4h up move, 4h uptrend
+          short_entry_logic.append((df["RSI_3_4h"] < 80.0) | (df["AROONU_14_4h"] < 100.0) | (df["ROC_9_4h"] < 20.0))
           # 4h up move, 15m still low, 4h still not high enough
           short_entry_logic.append(
             (df["RSI_3_4h"] < 80.0) | (df["STOCHRSIk_14_14_3_3_15m"] > 60.0) | (df["AROONU_14_4h"] > 80.0)
