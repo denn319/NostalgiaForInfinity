@@ -18994,6 +18994,8 @@ class NostalgiaForInfinityX7(IStrategy):
           long_entry_logic.append(df["RSI_14_1d"] < 80.0)
           # big drop in the last hour
           long_entry_logic.append(df["close"] > (df["close_max_12"] * 0.50))
+          # 5m & 4h down move, 1d downtrend
+          long_entry_logic.append((df["RSI_3"] > 5.0) | (df["RSI_3_4h"] > 10.0) | (df["ROC_9_1d"] > -20.0))
           # 5m & 4h down move, 15m still high
           long_entry_logic.append(
             (df["RSI_3"] > 5.0) | (df["RSI_3_4h"] > 25.0) | (df["STOCHRSIk_14_14_3_3_15m"] < 50.0)
